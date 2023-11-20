@@ -1,6 +1,6 @@
 import "./post.css";
 import { MoreVert } from "@material-ui/icons";
-
+import { useNavigate } from "react-router-dom";
 import { useState , useEffect} from "react";
 import axios from "axios"
 import {format} from "timeago.js";
@@ -13,25 +13,36 @@ export default function Post({ post }) {
   const [user,setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const {user:currentuser} = useContext(AuthContext)
-
+  const navigate = useNavigate();
   useEffect(() => {
     setIsLiked(post.likes.includes(currentuser._id));
   }, [currentuser._id, post.likes]);
 
   const likeHandler =()=>{
     try {
-      axios.put("https://socialmediaappbackend-uir0.onrender.com/api/posts/" + post._id + "/like", { userId: currentuser._id });
+      axios.put("https://blue-pilot-frcad.pwskills.app:8080/api/posts/" + post._id + "/like", { userId: currentuser._id });
     } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
+  }
+  const deletehandler = async () =>{
+    try{
+      console.log(currentuser._id);
+      await axios.put("https://blue-pilot-frcad.pwskills.app:8080/api/posts/" + post._id +"/delete", { userspost: currentuser._id });
+      navigate("/");
+      
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   useEffect(() => {
     const fetchUser = async()=>{
       // console.log("Hello bkl");
-      const res = await axios.get(`https://socialmediaappbackend-uir0.onrender.com/api/users?userId=${post.userId}`);
+      const res = await axios.get(`https://blue-pilot-frcad.pwskills.app:8080/api/users?userId=${post.userId}`);
       setUser(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
     fetchUser();
     
@@ -71,7 +82,9 @@ export default function Post({ post }) {
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comment} comments</span>
+            {/* <span className="postCommentText">{post.comment} comments</span> */}
+            <span className="postCommentText" >Update</span>
+            <span className="postCommentText" onClick={deletehandler}>Delete</span>
           </div>
         </div>
       </div>

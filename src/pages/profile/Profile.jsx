@@ -13,9 +13,9 @@ export default function Profile() {
   const username = useParams().username;
   useEffect(() => {
     const fetchUser = async()=>{
-      const res = await axios.get(`https://socialmediaappbackend-uir0.onrender.com/api/users?username=${username}`);
+      const res = await axios.get(`https://blue-pilot-frcad.pwskills.app:8080/api/users?username=${username}`);
       setUser(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
     fetchUser();
     
@@ -49,7 +49,7 @@ export default function Profile() {
           </div>
           <div className="profileRightBottom">
              <Feed username={username}/> 
-             <Rightbar user={user}/>
+             <Rightbar users={user}/>
           </div>
         </div>
       </div>

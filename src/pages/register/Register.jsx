@@ -27,7 +27,7 @@ export default function Register() {
       };
       try {
         console.log("hii");
-        const res = await axios.post("https://socialmediaappbackend-uir0.onrender.com/api/auth/register", user );
+        const res = await axios.post("https://blue-pilot-frcad.pwskills.app:8080/api/auth/register", user );
         console.log(res);
         redirectingfunc();
       } catch (err) {
@@ -42,9 +42,9 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Chat Fusion</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on ChatFusion.
           </span>
         </div>
         <div className="loginRight">

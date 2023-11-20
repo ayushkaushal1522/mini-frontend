@@ -2,6 +2,7 @@
   "name": "react-plain",
   "version": "0.1.0",
   "private": true,
+  
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.16.0"
-  },
-  "proxy": "https://red-journalist-odpwy.pwskills.app:8080/api"
+  }
+ 
 }
+ 

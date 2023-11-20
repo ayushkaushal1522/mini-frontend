@@ -25,15 +25,15 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("https://socialmediaappbackend-uir0.onrender.com/api/upload", data);
+        await axios.post("https://blue-pilot-frcad.pwskills.app:8080/api/upload", data);
       } catch (err) {console.log(err)}
     }
     try {
-      await axios.post("https://socialmediaappbackend-uir0.onrender.com/api/posts", newPost);
+      await axios.post("https://blue-pilot-frcad.pwskills.app:8080/api/posts", newPost);
       window.location.reload();
     } catch (err) {console.log(err)}
   };
-
+  // https://socialmediaappbackend-uir0.onrender.com
 
 
   return (

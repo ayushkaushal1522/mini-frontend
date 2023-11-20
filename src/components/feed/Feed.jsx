@@ -16,8 +16,8 @@ export default function Feed({username}) {
   useEffect(() => {
     const fetchPosts = async()=>{
       const res = username
-      ?await axios.get("https://socialmediaappbackend-uir0.onrender.com/api/posts/profile/" + username) 
-      :await axios.get("https://socialmediaappbackend-uir0.onrender.com/api/posts/timeline/"+ user._id)
+      ?await axios.get("https://blue-pilot-frcad.pwskills.app:8080/api/posts/profile/" + username) 
+      :await axios.get("https://blue-pilot-frcad.pwskills.app:8080/api/posts/timeline/"+ user._id)
       console.log("Hii" + username);
       setPosts(
         res.data.sort((p1, p2) => {
