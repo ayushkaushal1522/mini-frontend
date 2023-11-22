@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 
 
-export default function Feed({username}) {
+export default function Feed({username ,showdelete}) {
   const [posts,setPosts] = useState([]);
   const {user} = useContext(AuthContext)
   
@@ -36,7 +36,7 @@ export default function Feed({username}) {
       <div className="feedWrapper">
         {(!username || username === user.username) && <Share />}
         {posts.map((p) => (
-          <Post key={p._id} post={p} />
+          <Post key={p._id} post={p} showdelete={showdelete}/>
         ))}
       </div>
     </div>

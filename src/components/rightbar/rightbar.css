@@ -30,6 +30,12 @@
 
 .rightbarTitle{
     margin-bottom: 20px;
+    display: inline-block;
+}
+.updateprofile{
+  margin-left: 130px;
+  font-weight:bold;
+  
 }
 
 .rightbarFriendList {

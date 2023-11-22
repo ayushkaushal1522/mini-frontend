@@ -7,10 +7,10 @@ import "./home.css"
 export default function Home() {
   return (
     <>
-      <Topbar />
+      <Topbar showlogout={true} showdeleteaccount={false}/>
       <div className="homeContainer">
         <Sidebar />
-        <Feed/>
+        <Feed showdelete={false}/>
         <Rightbar/>
       </div>
     </>

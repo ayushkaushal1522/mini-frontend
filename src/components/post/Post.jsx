@@ -7,7 +7,7 @@ import {format} from "timeago.js";
 import {Link} from "react-router-dom"
 import {useContext} from "react"
 import { AuthContext } from "../../context/AuthContext";
-export default function Post({ post }) {
+export default function Post({ post , showdelete}) {
   const [like,setLike] = useState(post.likes.length)
   const [isLiked,setIsLiked] = useState(false)
   const [user,setUser] = useState({});
@@ -81,11 +81,11 @@ export default function Post({ post }) {
             <img className="likeIcon" src={`${PF}/heart.png`} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight">
+          
             {/* <span className="postCommentText">{post.comment} comments</span> */}
-            <span className="postCommentText" >Update</span>
-            <span className="postCommentText" onClick={deletehandler}>Delete</span>
-          </div>
+            {/* <span className="postCommentText" >Update</span> */}
+            {showdelete && <span className="postCommentText" onClick={deletehandler}>Delete</span>}
+          
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { Users } from "../../dummyData";
 import Online from "../online/Online";
 import axios from "axios";
 import {useEffect , useState , useContext} from "react"
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
 const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -13,6 +13,7 @@ export default function Rightbar({ users }) {
   const [allusers, setAllusers] = useState([]);
   const { user: currentuser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(false);
+  const navigate = useNavigate();
   
   
   useEffect(() => {
@@ -63,7 +64,9 @@ export default function Rightbar({ users }) {
     }
   };
 
-
+  const updateprofile = async() =>{
+      navigate("/updateprofile");
+  }
 
   const HomeRightbar = () => {
     return (

@@ -3,9 +3,11 @@ import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link , useNavigate} from "react-router-dom";
 import { useContext } from "react";
 import {AuthContext} from "../../context/AuthContext"
-export default function Topbar() {
+import axios from "axios";
+export default function Topbar({showlogout , showdeleteaccount}) {
 
   const navigate = useNavigate();
+  const {user} = useContext(AuthContext);
 
   const logoutfunction  = ()=>{
     localStorage.clear();
@@ -13,34 +15,50 @@ export default function Topbar() {
     navigate("/");
   }
 
+  const deleteaccountfunction = ()=>{
 
-  const {user} = useContext(AuthContext);
+    try{
+        axios.put("https://blue-pilot-frcad.pwskills.app:8080/api/users/"+user._id +"/delete" , {
+        userId:user._id
+      })
+      localStorage.clear();
+      // window.location.reload();
+      navigate("/login");
+      window.location.reload();
+    }
+    catch(err){
+      console.log(err);
+    }
+
+  }
+
+
+  
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="topbarContainer">
-      <div className="topbarLeft">
         <Link to="/" style={{textDecoration:"none"}}>
             <span className="logo">Chat Fusion</span>
         </Link>
-       
-      </div>
-      <div className="topbarCenter">
-        <div className="searchbar">
+      <div className="searchbar">
           <Search className="searchIcon" />
           <input
-            placeholder="Search for friend, post or video"
+            placeholder="Search for friends"
             className="searchInput"
           />
-        </div>
+  
       </div>
-      <div className="topbarRight">
         <div className="topbarLinks">
+          <Link to="/updateprofile" style={{textDecoration:"none"}}>
+            <span className="topbarLink">Update Profile</span>
+          </Link>
           <Link to="/" style={{textDecoration:"none"}}>
             <span className="topbarLink">Homepage</span>
           </Link>
           {/* <span className="topbarLink">Timeline</span> */}
-          <span className="logoutbutton" onClick={logoutfunction}>Log Out</span>
-        </div>
+          {showdeleteaccount && <span className="topbarLink" onClick={deleteaccountfunction}>Delete Account</span>}
+          {showlogout && <span className="topbarLink" onClick={logoutfunction}>Log Out</span>}
+       
         {/* <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person />
@@ -55,15 +73,14 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
         </div> */}
-        <Link to={`/profile/${user.username}`}>
-        <img src={user.profilePicture
-        ? PF + user.profilePicture
-        : PF + "person/contact.jpg"
-        } 
-        alt="" className="topbarImg"/>
-        </Link>
-        
-      </div>
+          <Link to={`/profile/${user.username}`}>
+          <img src={user.profilePicture
+          ? PF + user.profilePicture
+          : PF + "person/contact.jpg"
+          } 
+          alt="" className="topbarImg"/>
+          </Link>
+        </div>
     </div>
   );
 }

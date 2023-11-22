@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
+import UpdateProfile from "./pages/updateprofile/UpdateProfile"
 import { AuthContext } from "./context/AuthContext";
 import {
   BrowserRouter,
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="register" element={user ? <Navigate to="/" /> : <Register />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/updateprofile" element={<UpdateProfile />}/>
           <Route path="/" element={user ? <Home /> : <Register />}>
           
         </Route>

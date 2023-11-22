@@ -25,7 +25,7 @@ export default function Profile() {
 
   return (
     <>
-      <Topbar />
+      <Topbar showlogout={false} showdeleteaccount={true}/>
       <div className="profile">
         <Sidebar />
         <div className="profileRight">
@@ -48,7 +48,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-             <Feed username={username}/> 
+             <Feed username={username} showdelete={true}/> 
              <Rightbar users={user}/>
           </div>
         </div>
