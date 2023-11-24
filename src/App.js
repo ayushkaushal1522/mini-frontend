@@ -4,6 +4,7 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import UpdateProfile from "./pages/updateprofile/UpdateProfile"
 import { AuthContext } from "./context/AuthContext";
+import ChatPage from "./pages/chatpage/Chat";
 import {
   BrowserRouter,
   Routes,
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile/:username" element={<Profile />} />
           <Route path="/updateprofile" element={<UpdateProfile />}/>
           <Route path="/" element={user ? <Home /> : <Register />}>
+          {/* <Route path="/chatpage" element={<ChatPage/>} /> */}
           
         </Route>
       </Routes>

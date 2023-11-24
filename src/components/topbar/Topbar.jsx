@@ -38,7 +38,7 @@ export default function Topbar({showlogout , showdeleteaccount}) {
   return (
     <div className="topbarContainer">
         <Link to="/" style={{textDecoration:"none"}}>
-            <span className="logo">Chat Fusion</span>
+          <span className="logo">Chat Fusion</span>
         </Link>
       <div className="searchbar">
           <Search className="searchIcon" />
@@ -46,7 +46,6 @@ export default function Topbar({showlogout , showdeleteaccount}) {
             placeholder="Search for friends"
             className="searchInput"
           />
-  
       </div>
         <div className="topbarLinks">
           <Link to="/updateprofile" style={{textDecoration:"none"}}>
@@ -74,11 +73,14 @@ export default function Topbar({showlogout , showdeleteaccount}) {
           </div>
         </div> */}
           <Link to={`/profile/${user.username}`}>
-          <img src={user.profilePicture
-          ? PF + user.profilePicture
-          : PF + "person/contact.jpg"
-          } 
-          alt="" className="topbarImg"/>
+            <div className="topbarLink">
+              <img src={user.profilePicture
+              ? PF + user.profilePicture
+              : PF + "person/contact.jpg"
+              } 
+              alt="" className="topbarImg"/>
+            </div>
+            
           </Link>
         </div>
     </div>

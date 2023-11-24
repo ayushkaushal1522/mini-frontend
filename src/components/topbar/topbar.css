@@ -7,10 +7,8 @@
   position: sticky;
   top: 0;
   z-index: 999;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-
-
 
 .logo {
   font-size: 24px;
@@ -48,24 +46,14 @@
 
 
 .topbarLinks {
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
   font-weight: bold;
   color: white;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
-
-.topbarIcons {
-  display: flex;
-}
-
-/* .topbarIconItem {
-  margin-right: 15px;
-  cursor: pointer;
-  position: relative;
-} */
 
 
 
@@ -74,15 +62,12 @@
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  margin-left: 30px;
   cursor: pointer;
 }
-/* .topbarLinks{
-  position: relative;
-  width: 200px;
-} */
 .topbarLink{
   font-size: 20px;
-  margin-left: 40px;
+  margin-left: 20px;
   font-weight: bold;
   color: white;
   cursor: pointer;

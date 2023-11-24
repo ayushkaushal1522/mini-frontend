@@ -8,8 +8,8 @@ import axios from "axios"
 import {PermMedia, Label,Room, EmojiEmotions , Cancel} from "@material-ui/icons"
 
 
-export default function Update() {
-    const { user , isFetching, error ,dispatch } = useContext(AuthContext);
+export default function UpdateProfile() {
+    const { user  } = useContext(AuthContext);
     
     const profilepicture = useRef();
     const coverpicture = useRef();
@@ -27,6 +27,7 @@ export default function Update() {
         // console.log(user);
         const newinfo = {
             userId: user._id,
+            desc:desc.current.value,
             city:city.current.value,
             from:from.current.value,
             relationship:relation.current.value

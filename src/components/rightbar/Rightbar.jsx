@@ -125,6 +125,7 @@ export default function Rightbar({ users }) {
         
 
         )}
+        <a href="https://blue-dentist-kibod.pwskills.app:3000/chats">chat karo</a>
         {console.log(users)}
         {console.log(currentuser)}
         <h4 className="rightbarTitle">User information</h4>
